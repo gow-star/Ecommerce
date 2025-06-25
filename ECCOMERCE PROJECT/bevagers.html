@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="icono.min.css">
+  <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
+  
+    <title>
+        fruits and vegetables
+    </title>
+<style>
+    .grocerry{
+            background-color: greenyellow;
+            width:100%;
+            height:150px;
+            display: flex;
+        }
+    .header{
+          padding:50px;
+          margin-left: 40%;
+        
+    }      
+        
+        a{
+            font-size: 50px;
+            color: black;
+            text-decoration: none;
+            margin-left:60px;
+            margin-top: 20%;
+   
+        }
+        .icon{
+            margin-top:50px;
+            margin-left: 20%;
+        }
+        
+        .big-cart{
+            transform: scale(5);
+            color:black;
+        
+        } 
+        .container{
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            background-color:wheat;
+            width:100%;
+            height:1000px;
+            
+        }
+.container  > .product1{
+        
+             background-color: white;
+             gap:50px;
+             height:900px;
+             margin-left: 4%;
+             width:80%;
+             
+        }
+        #b1{
+            width:70%;
+            padding: 2px;
+            margin-left:10%;
+        }
+        #b3{
+            width:100%;
+        }
+        img{
+            width:90%;
+    
+            
+        }
+        p{
+            font-size: 40px;
+            margin-left: 2%;
+        }
+        button{
+            border-radius:5px;
+            background-color: green;
+            color: white;
+            font-size: 20px;
+            width:80%;
+            height:90px;
+            margin-left:10%;
+            
+
+        }
+         .cart-count {
+    position: relative;
+      top: -10px;
+      right:-10px;
+      margin-left:60%;
+      background-color: red;
+      color:white;
+      font-size:30px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      font-weight: bold;
+    }
+    
+        
+
+</style>
+</head>
+<body>
+     <div class="grocerry">
+        <div class="header">
+            <nav>
+                <a href="grohome.html">Home</a>
+                <a href="products.html">categories</a>
+                <a href="deals">Deals</a>
+                
+            </nav>
+        </div>
+        <a href="cart.html" class="icon">
+  <i class="icono-cart big-cart"></i>
+  <span class="cart-count" id="cartCount">0</span>
+</a>
+    </div>
+    <div class="container">
+        <div class="product1">
+            <img id="b1" src="image1/b1.jpg">
+            <p>Nescafe Sunrise Premium Pouch</p>
+            <p>8.5gm</p>
+            <p>₹9.8</p>
+            <button onclick="addtocart('Nescafe Sunrise Premium Pouch', 9.8, 'image1/b1.jpg')">ADD TO CART</button>
+        </div>
+        <div class="product1">
+            <img id="b2" src="image1/b2.jpg">
+            <p>Sprite Drink</p>
+            <p>2.5Ltr</p>
+            <p>₹85</p>
+            <button onclick="addtocart('sprite Drink',85,`image1/b2.jpg`)">ADD to CART</button>
+        </div>
+        <div class="product1">
+            <img id="b3" src="image1/b3.jpg">
+            <p>Boost Pouch Pack</p>
+            <p>200gm</p>
+            <p>₹97</p>
+            <button onclick="addtocart('Boost Pouch Pack', 97, 'image1/b3.jpg')">ADD TO CART</button>
+        </div>
+        <div class="product1">
+            <img id="b4" src="image1/b4.jpg">
+            <p>Tata chakra Gold </p>
+            <p>500g</p>
+            <p>₹395</p>
+            <button onclick="addtocart('Tata chakra Gold',395,`image1/b4.jpg`)">ADD to CART</button>
+        </div>
+    </div>
+    <script>
+        function addtocart(name, price, image) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let existingItem = cart.find(item => item.name === name);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({ name, price, image, quantity: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  document.getElementById("cartCount").textContent = cart.length;
+}
+
+window.onload = function () {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  document.getElementById("cartCount").textContent = cart.length;
+};
+
+    </script>
+</body>
+</html>

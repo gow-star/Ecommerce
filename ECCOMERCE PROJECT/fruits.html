@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="icono.min.css">
+  <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
+  
+    <title>
+        fruits and vegetables
+    </title>
+<style>
+    .grocerry{
+            background-color: greenyellow;
+            width:100%;
+            height:150px;
+            display: flex;
+        }
+    .header{
+          padding:50px;
+          margin-left: 40%;
+        
+    }      
+        
+        a{
+            font-size: 50px;
+            color: black;
+            text-decoration: none;
+            margin-left:60px;
+            margin-top: 20%;
+   
+        }
+        .icon{
+            margin-top:50px;
+            margin-left: 20%;
+        }
+        
+        .big-cart{
+            transform: scale(5);
+            color:black;
+        
+        } 
+        .container{
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            background-color:wheat;
+            width:100%;
+            height:1000px;
+            
+        }
+.container  > .product1{
+        
+             background-color: white;
+             gap:50px;
+             height:900px;
+             margin-left: 4%;
+             width:80%;
+             
+        }
+        img{
+            width:90%;
+            
+        }
+        p{
+            font-size: 40px;
+            margin-left: 2%;
+        }
+        button{
+            border-radius:5px;
+            background-color: green;
+            color: white;
+            font-size: 20px;
+            width:80%;
+            height:90px;
+            margin-left:10%;
+            
+
+        }
+        #veg1{
+            width:100%;
+        }
+         .cart-count {
+    position: relative;
+      top: -10px;
+      right:-10px;
+      margin-left:60%;
+      background-color: red;
+      color:white;
+      font-size:30px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      font-weight: bold;
+    }
+    
+
+</style>
+</head>
+<body>
+     <div class="grocerry">
+        <div class="header">
+            <nav>
+                <a href="grohome.html">Home</a>
+                <a href="products.html">categories</a>
+                <a href="deals">Deals</a>
+                
+            </nav>
+        </div>
+        <!-- <div class="icon">
+           <i class="icono-cart big-cart"></i>
+           <span class="cart-count" id="cartCount">0</span>
+        </div> --><a href="cart.html" class="icon">
+  <i class="icono-cart big-cart"></i>
+  <span class="cart-count" id="cartCount">0</span>
+</a>
+
+    </div>
+    <div class="container">
+        <div class="product1">
+            <img id="veg1" src="image1/veg1.jpg">
+            <p>veg onion premium</p>
+            <p>1kg</p>
+            <p>₹25</p>
+            <button onclick="addtocart('Veg Onion Premium', 25, 'image1/veg1.jpg')">ADD to CART</button>
+
+        </div>
+        <div class="product1">
+            <img id="veg2" src="image1/veg2.jpg">
+            <p>veg Tomato country</p>
+            <p>1kg</p>
+            <p>₹23</p>
+            <button onclick="addtocart('Veg Tomato country', 23, 'image1/veg2.jpg')">ADD to CART</button>
+
+        </div>
+        <div class="product1">
+            <img id="frut1" src="image1/frut1">
+            <p>Mango banganaballi</p>
+            <p>1kg</p>
+            <p>₹37</p>
+            <button onclick="addtocart('Mango banganaballi', 37, 'image1/frut1')">ADD to CART</button>
+
+        </div>
+        <div class="product1">
+            <img id="frut2" src="image1/frut2">
+            <p>Papaya</p>
+            <p>1kg</p>
+            <p>₹21</p>
+            <button onclick="addtocart('Papaya', 21, 'image1/frut2')">ADD to CART</button>
+
+        </div>
+    </div>
+    <script>
+     
+  // ✅ Show cart count when the page loads
+  window.onload = function () {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    document.getElementById("cartCount").textContent = cart.length;
+  };
+
+  // ✅ Add to cart function
+  function addtocart(name, price, image) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existingItem = cart.find(item => item.name === name);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({ name, price, image, quantity: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    document.getElementById("cartCount").textContent = cart.length;
+  }
+
+
+   
+
+  
+
+
+
+    </script>
+</body>
+</html>
