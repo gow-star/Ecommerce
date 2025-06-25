@@ -165,10 +165,11 @@
       if (cart.length === 0) {
         alert("Your cart is empty!");
         return;
+        window.location.href = "products.html"; 
       }
       alert("✅ Thank you for your purchase!");
       localStorage.removeItem("cart");
-      window.location.href = "products.html"; // change if needed
+      window.location.href = "checkout.html"; // change if needed
     }
 
     renderCart();
